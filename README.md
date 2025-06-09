@@ -47,6 +47,13 @@ All LLM responses are cleaned, parsed, and structured into a single JSON file (`
 | `code_reader.py` | Scans the directory or single file, returning Java code as dictionary. |
 | `analyzer.py` | Chunks code and invokes LLM for structured analysis. |
 
+
+---
+
+## How to run
+**Installation** : ```python3 -r requirements.txt```
+**Run** : # to run model on full codebase ```python3 generate_summary.py```
+**Run** : # to run model on single file ```python3 generate_summary.py <file path>```
 ---
 
 ## Open Source LLM Usage
