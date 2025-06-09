@@ -50,10 +50,32 @@ All LLM responses are cleaned, parsed, and structured into a single JSON file (`
 
 ---
 
-## How to run
-**Installation** : ```python3 -r requirements.txt```
-**Run** : # to run model on full codebase ```python3 generate_summary.py```
-**Run** : # to run model on single file ```python3 generate_summary.py <file path>```
+## Get Started
+
+### Prerequisite
+- Python 3.8+
+- pip
+- Ollama installed and running locally
+- ollama pull qwen2.5:7b
+
+## Installation
+To install the required dependencies, run:
+```
+pip install -r requirements.txt
+```
+
+## Run on Full Codebase
+
+```
+python3 generate_summary.py
+```
+
+## Run on specific file
+
+```
+python3 generate_summary.py <file_path>
+```
+
 ---
 
 ## Open Source LLM Usage
