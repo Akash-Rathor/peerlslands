@@ -1,50 +1,61 @@
-# Java Codebase Analyzer using LLMs
+# Java Codebase Analyzer using Open-Source LLM (Qwen + Ollama)
 
-This project analyzes a Java codebase and generates structured, machine-readable summaries for each file. It leverages a Large Language Model (LLM) to provide insights into the components, relationships, and complexity of the codebase.
+A lightweight, modular tool that scans Java source code, intelligently chunks large files, and generates **structured, machine-readable summaries** using an open-source LLM (`qwen2.5-coder:7b`) running locally via **Ollama**.
 
 ---
 
 ## Objective
 
-To automate the process of understanding large codebases by generating structured summaries from source code using an LLM. This is especially useful for onboarding, documentation, and software audits.
+Enable teams to **quickly understand large Java codebases**—especially in unfamiliar legacy projects—by automating the summarization process with AI, **without sending any data to cloud-based LLMs**.
+
+This tool is ideal for:
+- Onboarding new developers
+- Conducting internal code reviews
 
 ---
 
-## How It Works
+## Approach & Architecture
 
-1. **Code Reading**: Recursively traverses the provided path to read `.java` files.
-2. **Chunking**: Splits large files into manageable chunks to avoid context overflow in LLMs.
-3. **LLM Analysis**: Sends each chunk to an LLM with a consistent prompt for summary generation.
-4. **JSON Structuring**: Cleans and parses the LLM response into structured JSON.
-5. **Output**: Consolidates and writes the results to a single `sakila_analysis.json` file.
+### 1. Read & Identify Files
+The script starts by recursively scanning the given path for Java files. It supports both:
+- Full directory analysis
+- Single file analysis (if a `file path` is passed)
+
+### 2. Code Chunking
+Large Java files are split into **logical chunks** (based on line count or delimiters), ensuring:
+- Tokens stay within LLM context limits
+- Each chunk remains semantically meaningful
+
+### 3. LLM-Powered Summarization
+Each chunk is sent to the **Qwen model**, running locally via `Ollama`. The prompt ensures structured output in JSON format, including:
+- Summary
+- Key classes/functions
+- Dependencies
+- Cyclomatic complexity
+- Developer insights
+
+### 4. Output Consolidation
+All LLM responses are cleaned, parsed, and structured into a single JSON file (`sakila_analysis.json`) for easy consumption or integration into other tools.
 
 ---
 
-## Methodologies Employed
+## Major Files in This Project
 
-- **Recursive Directory Traversal**: Automatically reads all `.java` files within nested directories.
-- **Code Chunking Strategy**: Large files are split into logical chunks to remain within LLM token limits.
-- **Prompt Engineering**: A concise, deterministic prompt is used to guide the LLM’s output structure.
-- **Regex-Based JSON Extraction**: Ensures clean parsing by removing markdown artifacts (like triple backticks).
-- **Fallback Strategy**: Gracefully handles failed LLM responses with structured placeholder data.
+| File | Responsibility |
+|------|----------------|
+| `generate_summary.py` | CLI entry point. Parses CLI args and initiates the pipeline. |
+| `code_reader.py` | Scans the directory or single file, returning Java code as dictionary. |
+| `analyzer.py` | Chunks code and invokes LLM for structured analysis. |
 
 ---
 
-## Output Structure (per chunk)
+## Open Source LLM Usage
 
-Each chunk returns:
+This tool is **fully offline** and respects your code privacy. It uses:
 
-```json
-{
-  "summary": "High-level overview of what the code does.",
-  "functions": ["methodA", "methodB"],
-  "classes": ["ClassName"],
-  "dependencies": ["javax.persistence", "java.util.List"],
-  "complexity": {
-    "cyclomatic": 3,
-    "nesting_depth": 2
-  },
-  "comments": [
-    "Observations or suggestions from the LLM about the code."
-  ]
-}
+- **LLM:** [Qwen](https://ollama.com/library/qwen2.5) (by Alibaba)
+- **Runtime:** [Ollama](https://ollama.com/) — a local LLM manager
+- **Command:** The LLM is invoked using command in terminal:
+  ```
+  ollama run qwen2.5-coder:7b
+  ```
