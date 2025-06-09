@@ -6,7 +6,7 @@ A lightweight, modular tool that scans Java source code, intelligently chunks la
 
 ## Objective
 
-Enable teams to **quickly understand large Java codebases**—especially in unfamiliar legacy projects—by automating the summarization process with AI, **without sending any data to cloud-based LLMs**.
+Enable teams to **quickly understand large Java codebases** - especially in unfamiliar legacy projects - by automating the summarization process with AI, **without sending any data to cloud-based LLMs**.
 
 This tool is ideal for:
 - Onboarding new developers
@@ -54,7 +54,7 @@ All LLM responses are cleaned, parsed, and structured into a single JSON file (`
 This tool is **fully offline** and respects your code privacy. It uses:
 
 - **LLM:** [Qwen](https://ollama.com/library/qwen2.5) (by Alibaba)
-- **Runtime:** [Ollama](https://ollama.com/) — a local LLM manager
+- **Runtime:** [Ollama](https://ollama.com/)  -  a local LLM manager
 - **Command:** The LLM is invoked using command in terminal:
   ```
   ollama run qwen2.5-coder:7b
