@@ -1,0 +1,2174 @@
+{
+    "./src/test/java/com/sparta/engineering72/sakilaproject/MockTests.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code snippet is a test class for mocking various repositories and services in a Java application related to a Sakila project, which likely involves managing actors, films, customers, categories, staff, rentals, and inventory.",
+            "functions": [
+                "@Before",
+                "@Test"
+            ],
+            "classes": [
+                "MockTests"
+            ],
+            "dependencies": [
+                "com.sparta.engineering72.sakilaproject.controller.*",
+                "com.sparta.engineering72.sakilaproject.entities.*",
+                "com.sparta.engineering72.sakilaproject.repositories.*",
+                "com.sparta.engineering72.sakilaproject.services.*"
+            ],
+            "complexity": {
+                "cyclomatic": 1,
+                "nesting_depth": 2
+            },
+            "comments": [
+                "The code uses Mockito for dependency injection and spying on repositories and services.",
+                "The test class is annotated with @RunWith(MockitoJUnitRunner.Silent.class), which configures the test runner to use Mockito for mocking."
+            ]
+        },
+        {
+            "chunk_index": 2,
+            "summary": "This code chunk sets up a test suite for a Spring-based application using Mockito for mocking and dependency injection. It includes tests for finding actors by ID and first name.",
+            "functions": [
+                "testActorById",
+                "testActorByFirstName"
+            ],
+            "classes": [
+                "RentalRepository",
+                "InventoryRepository",
+                "ActorService",
+                "CategoryService",
+                "FilmService",
+                "CustomerService",
+                "InventoryService",
+                "RentalService",
+                "ActorController",
+                "FilmController",
+                "CategoryController"
+            ],
+            "dependencies": [
+                "org.mockito.Spy",
+                "org.mockito.InjectMocks",
+                "org.mockito.MockitoAnnotations",
+                "com.example.repository.RentalRepository",
+                "com.example.repository.InventoryRepository",
+                "com.example.service.ActorService",
+                "com.example.service.CategoryService",
+                "com.example.service.FilmService",
+                "com.example.service.CustomerService",
+                "com.example.service.InventoryService",
+                "com.example.service.RentalService",
+                "com.example.controller.ActorController",
+                "com.example.controller.FilmController",
+                "com.example.controller.CategoryController"
+            ],
+            "complexity": {
+                "cyclomatic": 4,
+                "nesting_depth": 3
+            },
+            "comments": [
+                "The code uses @Spy and @InjectMocks annotations for mocking dependencies and injecting mocks into the target objects.",
+                "Each test method sets up a mock repository, defines behavior using Mockito's when().thenReturn() methods, invokes the controller method, and asserts expected outcomes.",
+                "There is no exception handling in the tests, which could be improved by adding try-catch blocks or assertions for potential exceptions."
+            ]
+        },
+        {
+            "chunk_index": 3,
+            "summary": "This code chunk contains three unit test methods for an `actorController` class. Each method tests the retrieval of an actor by different attributes (last name, more fields, full name) using a mock repository and asserts the expected values.",
+            "functions": [
+                "testActorByLastName",
+                "testActorByMore",
+                "testActorByFullName"
+            ],
+            "classes": [
+                "Actor",
+                "Timestamp"
+            ],
+            "dependencies": [
+                "actorRepository",
+                "actorController"
+            ],
+            "complexity": {
+                "cyclomatic": 3,
+                "nesting_depth": 2
+            },
+            "comments": [
+                "The code uses JUnit for testing and Mockito for mocking the repository.",
+                "Each test method creates a new `Actor` object, sets its properties, mocks the repository to return this object when queried by ID, calls the controller method, and asserts that the returned actor's properties match the expected values."
+            ]
+        },
+        {
+            "chunk_index": 4,
+            "summary": "This code contains a series of unit tests for a `filmController` class that retrieves films by different attributes such as ID, description, rating, and length.",
+            "functions": [
+                "testFilmByID",
+                "testFilmByDescritption",
+                "testFilmByRating",
+                "testFilmByLength"
+            ],
+            "classes": [],
+            "dependencies": [
+                "FilmActor",
+                "Actor",
+                "Film",
+                "filmRepository",
+                "filmController"
+            ],
+            "complexity": {
+                "cyclomatic": 4,
+                "nesting_depth": 2
+            },
+            "comments": [
+                "Each test method creates a mock `Film` object with specific attributes and sets up a mock repository return value.",
+                "The tests verify that the `filmController.findFilmByID` method returns the correct film based on different criteria."
+            ]
+        },
+        {
+            "chunk_index": 5,
+            "summary": "The code contains two test methods for a `FilmController` class. Each method tests a different property of the `Film` object retrieved from a repository.",
+            "functions": [
+                "testFilmByName",
+                "testFilmByDescription"
+            ],
+            "classes": [
+                "Film",
+                "FilmRepository",
+                "FilmController"
+            ],
+            "dependencies": [
+                "org.mockito.Mockito.when",
+                "org.junit.Assert.assertEquals"
+            ],
+            "complexity": {
+                "cyclomatic": 2,
+                "nesting_depth": 3
+            },
+            "comments": [
+                "The methods `testFilmByName` and `testFilmByDescription` are both unit tests for the `findFilmByID` method in `FilmController`.",
+                "The code uses Mockito to mock the `getFilmByFilmId` method of `FilmRepository`.",
+                "There is a minor issue in `testFilmByDescription`: the variable `theFilm` should be set using `filmController.findFilmByID(5)` instead of just assigning it to the `film` object."
+            ]
+        },
+        {
+            "chunk_index": 6,
+            "summary": "The code contains two test methods for a film and category controller.",
+            "functions": [
+                "testFilms",
+                "testCategoryById"
+            ],
+            "classes": [
+                "Film",
+                "Category",
+                "filmRepository",
+                "categoryRepository",
+                "categoryController"
+            ],
+            "dependencies": [
+                "Timestamp",
+                "BigDecimal",
+                "when",
+                "assertEquals"
+            ],
+            "complexity": {
+                "cyclomatic": 2,
+                "nesting_depth": 3
+            },
+            "comments": [
+                "The testFilms method sets up a film object and asserts its properties.",
+                "The testCategoryById method tests the retrieval of a category by ID."
+            ]
+        },
+        {
+            "chunk_index": 7,
+            "summary": "This code chunk contains three test methods for customer-related functionality using Mockito for mocking repository calls.",
+            "functions": [
+                "testCategoryByName",
+                "testCustomerById",
+                "testCustomer"
+            ],
+            "classes": [
+                "Category",
+                "Customer",
+                "Date",
+                "Timestamp"
+            ],
+            "dependencies": [
+                "categoryRepository",
+                "customerRepository"
+            ],
+            "complexity": {
+                "cyclomatic": 3,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The code has high duplication with redundant setup and assertions for each test method.",
+                "Variable names like 'secondCategory' and 'secondCustomer' are not descriptive."
+            ]
+        },
+        {
+            "chunk_index": 8,
+            "summary": "This code chunk contains two test methods for a Staff and FilmController class, using JUnit and Mockito for testing staff repository interactions and film controller functionality.",
+            "functions": [
+                "testStaff",
+                "testFilmController"
+            ],
+            "classes": [
+                "Staff",
+                "StaffRepository",
+                "FilmController"
+            ],
+            "dependencies": [
+                "Timestamp",
+                "ModelMap",
+                "staffRepository",
+                "filmService",
+                "inventoryService",
+                "rentalService",
+                "customerService"
+            ],
+            "complexity": {
+                "cyclomatic": 2,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The code uses Mockito to mock staffRepository and inject it into FilmController for testing.",
+                "Test methods cover the setup, execution, and verification of staff attributes and film controller method."
+            ]
+        },
+        {
+            "chunk_index": 9,
+            "summary": "This code contains test methods for controllers in a film management system, including FilmController, CategoryController, and ActorController.",
+            "functions": [
+                "testFilmController2",
+                "testCategory",
+                "testCategory2",
+                "testActorController1"
+            ],
+            "classes": [
+                "FilmController",
+                "CategoryController",
+                "ActorController"
+            ],
+            "dependencies": [
+                "ModelMap",
+                "filmService",
+                "inventoryService",
+                "rentalService",
+                "customerService",
+                "categoryService",
+                "actorService"
+            ],
+            "complexity": {
+                "cyclomatic": 4,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "Each test method creates a new instance of the controller and calls one of its methods, passing mock data and assertions to verify the expected behavior.",
+                "The use of ModelMap suggests that these controllers are returning views or model data."
+            ]
+        },
+        {
+            "chunk_index": 10,
+            "summary": "This code snippet contains unit tests for a CustomerController class.",
+            "functions": [
+                "testCustomerController",
+                "testCustomerController2"
+            ],
+            "classes": [
+                "CustomerController"
+            ],
+            "dependencies": [
+                "ModelMap",
+                "customerService",
+                "rentalService",
+                "inventoryService",
+                "filmService"
+            ],
+            "complexity": {
+                "cyclomatic": 4,
+                "nesting_depth": 3
+            },
+            "comments": [
+                "The code tests two methods of the CustomerController class using JUnit assertions."
+            ]
+        },
+        {
+            "chunk_index": 11,
+            "summary": "This code chunk is a JUnit test method named 'testInventory' that tests inventory functionality. It sets up an inventory with a film and verifies its properties.",
+            "functions": [
+                "testInventory"
+            ],
+            "classes": [
+                "Date",
+                "Timestamp",
+                "Film",
+                "Inventory"
+            ],
+            "dependencies": [
+                "inventoryRepository"
+            ],
+            "complexity": {
+                "cyclomatic": 3,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The method uses JUnit assertions to verify the properties of an inventory object.",
+                "Timestamp objects are created and manipulated, but their usage seems redundant as 'date' is not used elsewhere in the method."
+            ]
+        },
+        {
+            "chunk_index": 12,
+            "summary": "This code chunk is a unit test for the rental functionality. It sets up various objects and uses mocking to verify the behavior of the `rentalRepository` when retrieving a rental by its ID.",
+            "functions": [
+                "testRental"
+            ],
+            "classes": [
+                "Inventory",
+                "Customer",
+                "Staff",
+                "Rental"
+            ],
+            "dependencies": [
+                "rentalRepository"
+            ],
+            "complexity": {
+                "cyclomatic": 4,
+                "nesting_depth": 2
+            },
+            "comments": [
+                "The test sets up objects and uses mocking for a repository, which is common in unit testing to isolate the functionality being tested."
+            ]
+        },
+        {
+            "chunk_index": 13,
+            "summary": "This code contains a unit test for the method `getCategoryByCategoryId` in the `categoryRepository`. The test sets up a mock category with a timestamp and asserts that the retrieved category has the same timestamp.",
+            "functions": [
+                "testCategoryByTimeStamp"
+            ],
+            "classes": [
+                "Timestamp",
+                "Category",
+                "categoryRepository"
+            ],
+            "dependencies": [
+                "java.sql.Timestamp",
+                "org.mockito.Mockito.when"
+            ],
+            "complexity": {
+                "cyclomatic": 1,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The code is simple and focused on a single unit test case.",
+                "The use of Mockito's `when` method suggests that the repository layer might be using a mocking framework for testing purposes."
+            ]
+        }
+    ],
+    "./src/test/java/com/sparta/engineering72/sakilaproject/SakilaProjectApplicationTests.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This Java code contains unit tests for methods in the MainController class.",
+            "functions": [
+                "MainController1",
+                "MainController2",
+                "MainController3"
+            ],
+            "classes": [
+                "SakilaProjectApplicationTests",
+                "MainController"
+            ],
+            "dependencies": [
+                "com.sparta.engineering72.sakilaproject.controller.MainController"
+            ],
+            "complexity": {
+                "cyclomatic": 3,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "Each test method creates an instance of MainController and calls one of its methods, then asserts the expected result."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/SakilaProjectApplication.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code is a Spring Boot application entry point.",
+            "functions": [
+                "main"
+            ],
+            "classes": [
+                "SakilaProjectApplication"
+            ],
+            "dependencies": [
+                "SpringBootApplication"
+            ],
+            "complexity": {
+                "cyclomatic": 1,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The class is annotated with @SpringBootApplication, which enables auto-configuration, component scanning, and dependency injection.",
+                "The main method starts the Spring Boot application."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/securingweb/WebSecurityConfig.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code configures Spring Security for the Sakila Project web application. It sets up authentication using a DAO provider and custom user details services.",
+            "functions": [
+                "configure(AuthenticationManagerBuilder auth)",
+                "configure(HttpSecurity http)"
+            ],
+            "classes": [
+                "WebSecurityConfig"
+            ],
+            "dependencies": [
+                "com.sparta.engineering72.sakilaproject.services.CustomerService",
+                "com.sparta.engineering72.sakilaproject.services.StaffService",
+                "org.springframework.beans.factory.annotation.Autowired",
+                "org.springframework.context.annotation.Bean",
+                "org.springframework.context.annotation.Configuration",
+                "org.springframework.security.authentication.dao.DaoAuthenticationProvider",
+                "org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder",
+                "org.springframework.security.config.annotation.web.builders.HttpSecurity",
+                "org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter",
+                "org.springframework.security.core.userdetails.UserDetailsService",
+                "org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder",
+                "org.springframework.security.crypto.password.PasswordEncoder"
+            ],
+            "complexity": {
+                "cyclomatic": 4,
+                "nesting_depth": 3
+            },
+            "comments": [
+                "The code is well-structured with clear dependencies and configurations.",
+                "It uses Spring Security annotations for configuration, which simplifies the setup.",
+                "The use of a DAO authentication provider indicates a traditional database-based user management."
+            ]
+        },
+        {
+            "chunk_index": 2,
+            "summary": "This code configures security settings for an HTTP server using Spring Security. It defines URL paths that require authentication and those that do not, and specifies custom handlers for successful login.",
+            "functions": [
+                "configure"
+            ],
+            "classes": [],
+            "dependencies": [
+                "CustomerService",
+                "StaffService",
+                "SuccessHandler"
+            ],
+            "complexity": {
+                "cyclomatic": 4,
+                "nesting_depth": 3
+            },
+            "comments": [
+                "The commented-out lines suggest additional configurations that could be implemented, such as handling access denied pages and custom logout settings."
+            ]
+        },
+        {
+            "chunk_index": 3,
+            "summary": "This code defines a Spring Security configuration class with methods to provide user details service, password encoder, and authentication provider.",
+            "functions": [
+                "userDetailsService",
+                "passwordEncoder",
+                "authenticationProvider",
+                "configure"
+            ],
+            "classes": [
+                "UserDetailsService",
+                "PasswordEncoder",
+                "DaoAuthenticationProvider"
+            ],
+            "dependencies": [
+                "org.springframework.context.annotation.Bean",
+                "org.springframework.security.core.userdetails.UserDetailsService",
+                "org.springframework.security.crypto.password.PasswordEncoder",
+                "org.springframework.security.authentication.dao.DaoAuthenticationProvider",
+                "org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder"
+            ],
+            "complexity": {
+                "cyclomatic": 3,
+                "nesting_depth": 2
+            },
+            "comments": [
+                "The code uses Spring Security annotations and classes to configure authentication.",
+                "Each method is annotated with @Bean, indicating they return a bean for the Spring context."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/securingweb/SuccessHandler.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines a Spring Security handler for successful authentication, handling redirection based on user roles.",
+            "functions": [
+                "onAuthenticationSuccess"
+            ],
+            "classes": [
+                "SuccessHandler"
+            ],
+            "dependencies": [
+                "org.springframework.security.core.Authentication",
+                "org.springframework.security.core.GrantedAuthority",
+                "org.springframework.security.web.DefaultRedirectStrategy",
+                "org.springframework.security.web.RedirectStrategy",
+                "org.springframework.security.web.authentication.AuthenticationSuccessHandler",
+                "javax.servlet.ServletException",
+                "javax.servlet.http.HttpServletRequest",
+                "javax.servlet.http.HttpServletResponse"
+            ],
+            "complexity": {
+                "cyclomatic": 1,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The class is annotated with @Component, indicating it's a Spring-managed bean.",
+                "It implements AuthenticationSuccessHandler, which requires implementing the onAuthenticationSuccess method."
+            ]
+        },
+        {
+            "chunk_index": 2,
+            "summary": "This Java code defines a Spring component that handles successful authentication. It redirects users based on their role.",
+            "functions": [
+                "onAuthenticationSuccess"
+            ],
+            "classes": [
+                "SuccessHandler",
+                "DefaultRedirectStrategy"
+            ],
+            "dependencies": [
+                "org.springframework.security.core.Authentication",
+                "org.springframework.security.core.GrantedAuthority",
+                "javax.servlet.http.HttpServletRequest",
+                "javax.servlet.http.HttpServletResponse",
+                "org.springframework.security.web.authentication.AuthenticationSuccessHandler",
+                "org.springframework.security.web.authentication.RedirectStrategy"
+            ],
+            "complexity": {
+                "cyclomatic": 5,
+                "nesting_depth": 3
+            },
+            "comments": [
+                "The code has a TODO comment for exception handling.",
+                "It uses a simple if-else structure to handle different roles, which can be improved with polymorphism or a map for better maintainability."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/securingweb/MvcConfig.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines a Spring MVC configuration class for handling view controllers in a web application.",
+            "functions": [
+                "addViewControllers"
+            ],
+            "classes": [
+                "MvcConfig"
+            ],
+            "dependencies": [
+                "org.springframework.context.annotation.Configuration",
+                "org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry",
+                "org.springframework.web.servlet.config.annotation.ViewControllerRegistry",
+                "org.springframework.web.servlet.config.annotation.WebMvcConfigurer"
+            ],
+            "complexity": {
+                "cyclomatic": 3,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The class is annotated with @Configuration to indicate that it is a source of bean definitions for the Spring IoC container.",
+                "It implements WebMvcConfigurer, which provides access to methods that customize the MVC configuration.",
+                "The addViewControllers method sets up view mappings for specific URLs to corresponding view names."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/securingweb/UserDetailsServiceImpl.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines a service class `UserDetailsServiceImpl` that implements the `UserDetailsService` interface from Spring Security. It retrieves user details for a given username by checking both customer and staff repositories.",
+            "functions": [
+                {
+                    "name": "loadUserByUsername",
+                    "description": "Retrieves user details based on the provided username. Tries to find the user in the Customer and Staff repositories."
+                }
+            ],
+            "classes": [
+                {
+                    "name": "UserDetailsServiceImpl",
+                    "description": "A service class implementing UserDetailsService for loading user details."
+                },
+                {
+                    "name": "CustomerRepository",
+                    "description": "Repository interface for accessing customer data."
+                },
+                {
+                    "name": "StaffRepository",
+                    "description": "Repository interface for accessing staff data."
+                },
+                {
+                    "name": "User",
+                    "description": "A class from Spring Security that builds UserDetails instances."
+                }
+            ],
+            "dependencies": [
+                "com.sparta.engineering72.sakilaproject.entities.Customer",
+                "com.sparta.engineering72.sakilaproject.entities.Staff",
+                "com.sparta.engineering72.sakilaproject.respositories.CustomerRepository",
+                "com.sparta.engineering72.sakilaproject.respositories.StaffRepository",
+                "org.springframework.beans.factory.annotation.Autowired",
+                "org.springframework.security.core.userdetails.UserDetails",
+                "org.springframework.security.core.userdetails.UserDetailsService",
+                "org.springframework.security.core.userdetails.UsernameNotFoundException",
+                "org.springframework.stereotype.Service"
+            ],
+            "complexity": {
+                "cyclomatic": 3,
+                "nesting_depth": 2
+            },
+            "comments": [
+                "The code is well-structured and follows best practices for a Spring Security UserDetailsService implementation.",
+                "The use of `@Autowired` annotations for dependency injection suggests that the application uses Spring's dependency injection framework effectively."
+            ]
+        },
+        {
+            "chunk_index": 2,
+            "summary": "This code constructs a User object based on whether a customer or staff member is provided. It uses BCryptPasswordEncoder to encode the password and sets appropriate roles.",
+            "functions": [
+                "UsernameNotFoundException",
+                "BCryptPasswordEncoder.encode"
+            ],
+            "classes": [
+                "User",
+                "User.UserBuilder"
+            ],
+            "dependencies": [
+                "UsernameNotFoundException",
+                "BCryptPasswordEncoder"
+            ],
+            "complexity": {
+                "cyclomatic": 2,
+                "nesting_depth": 3
+            },
+            "comments": [
+                "The code checks for null values in customer and staff, throwing an exception if both are null.",
+                "It uses a conditional statement to determine the password encoding based on whether staff or customer is provided."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/securingweb/FailureHandler.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines a custom access denied handler for Spring Security. It redirects users to an error page when they are denied access.",
+            "functions": [
+                {
+                    "name": "handle",
+                    "parameters": [
+                        {
+                            "name": "request",
+                            "type": "HttpServletRequest"
+                        },
+                        {
+                            "name": "response",
+                            "type": "HttpServletResponse"
+                        },
+                        {
+                            "name": "e",
+                            "type": "AccessDeniedException"
+                        }
+                    ],
+                    "returnType": "void",
+                    "description": "Handles the access denied exception by redirecting to an error page."
+                }
+            ],
+            "classes": [
+                {
+                    "name": "FailureHandler",
+                    "parentClass": "Object",
+                    "interfaces": [
+                        "AccessDeniedHandler"
+                    ],
+                    "annotations": [
+                        "@Component"
+                    ]
+                }
+            ],
+            "dependencies": [
+                "org.springframework.security.access.AccessDeniedException",
+                "org.springframework.security.web.access.AccessDeniedHandler",
+                "javax.servlet.ServletException",
+                "javax.servlet.http.HttpServletRequest",
+                "javax.servlet.http.HttpServletResponse"
+            ],
+            "complexity": {
+                "cyclomatic": 1,
+                "nesting_depth": 2
+            },
+            "comments": [
+                "The code is simple and follows best practices for handling access denied scenarios in Spring Security."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/respositories/CustomerRepository.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines an interface for the Customer repository in a Spring Data JPA application. It provides methods to retrieve customers based on various criteria and to count the total number of customers.",
+            "functions": [
+                "getCustomerByCredentials",
+                "getCustomerByUsername",
+                "getCustomersByFirstName",
+                "getCustomersByLastName",
+                "getCustomersByFullName",
+                "getCustomerByCustomerId",
+                "getCustomerByEmail",
+                "getCustomerCount"
+            ],
+            "classes": [
+                "CustomerRepository"
+            ],
+            "dependencies": [
+                "com.sparta.engineering72.sakilaproject.entities.Customer",
+                "org.springframework.data.jpa.repository.JpaRepository"
+            ],
+            "complexity": {
+                "cyclomatic": 8,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The use of native SQL queries directly in the repository interface is not ideal for maintainability. It's better to use JPQL or Criteria API.",
+                "Method names like `getCustomerByCredentials` and `getCustomerByEmail` are less descriptive than they could be. Using more specific terms (e.g., `findCustomerByEmail`) might improve clarity."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/respositories/RentalRepository.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines an interface for accessing Rental data in a database using Spring Data JPA. It includes methods to retrieve a Rental by its ID and a list of Rentals by a customer's ID.",
+            "functions": [
+                "getRentalByRentalId",
+                "getRentalByCustomerId"
+            ],
+            "classes": [
+                "RentalRepository"
+            ],
+            "dependencies": [
+                "com.sparta.engineering72.sakilaproject.entities.Rental",
+                "org.springframework.data.jpa.repository.JpaRepository"
+            ],
+            "complexity": {
+                "cyclomatic": 2,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The code uses Spring Data JPA for database operations, leveraging method naming conventions to define queries. The use of @Query annotation with a native SQL query is noted."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/respositories/StaffRepository.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines a JPA repository for the Staff entity in the Sakila project.",
+            "functions": [
+                "getStaffByUsername"
+            ],
+            "classes": [
+                "StaffRepository"
+            ],
+            "dependencies": [
+                "com.sparta.engineering72.sakilaproject.entities.Staff",
+                "org.springframework.data.jpa.repository.JpaRepository"
+            ],
+            "complexity": {
+                "cyclomatic": 1,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The StaffRepository interface extends JpaRepository, which provides CRUD operations for the Staff entity.",
+                "The getStaffByUsername method uses a native SQL query to retrieve a staff member by their username."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/respositories/ActorRepository.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This Java code defines an interface for interacting with the 'Actor' entity in a database using Spring Data JPA.",
+            "functions": [
+                "findActorsByFirstNameAndLastName",
+                "findActorsByFirstName",
+                "findActorsByLastName",
+                "getActorByActorId"
+            ],
+            "classes": [
+                "ActorRepository"
+            ],
+            "dependencies": [
+                "com.sparta.engineering72.sakilaproject.entities.Actor",
+                "com.sparta.engineering72.sakilaproject.entities.Film",
+                "org.springframework.data.jpa.repository.JpaRepository"
+            ],
+            "complexity": {
+                "cyclomatic": 4,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The interface extends JpaRepository, which provides basic CRUD operations for the Actor entity.",
+                "The methods use Spring Data JPA's query derivation to automatically generate queries based on method names."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/respositories/FilmRepository.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This Java code defines an interface `FilmRepository` that extends `JpaRepository`, providing methods to interact with the database for the `Film` entity. It includes native SQL queries for retrieving film data based on various criteria such as availability, category, and actor.",
+            "functions": [
+                "getAvailableFilmCount",
+                "getAvailableFilms",
+                "getAllFilmsByCategory",
+                "getAllFilmsByActor"
+            ],
+            "classes": [
+                "FilmRepository",
+                "JpaRepository",
+                "Actor",
+                "Customer",
+                "Film",
+                "FilmActor"
+            ],
+            "dependencies": [
+                "com.sparta.engineering72.sakilaproject.entities.Actor",
+                "com.sparta.engineering72.sakilaproject.entities.Customer",
+                "com.sparta.engineering72.sakilaproject.entities.Film",
+                "com.sparta.engineering72.sakilaproject.entities.FilmActor",
+                "org.springframework.data.jpa.repository.JpaRepository"
+            ],
+            "complexity": {
+                "cyclomatic": 4,
+                "nesting_depth": 3
+            },
+            "comments": [
+                "The use of native SQL queries suggests that the database schema and requirements are complex enough to warrant direct SQL manipulation.",
+                "The interface extending `JpaRepository` implies that Spring Data JPA will automatically handle CRUD operations for the `Film` entity, reducing boilerplate code."
+            ]
+        },
+        {
+            "chunk_index": 2,
+            "summary": "This code snippet defines an interface with two methods for finding films by title and retrieving a film by its ID.",
+            "functions": [
+                "findByTitle",
+                "getFilmByFilmId"
+            ],
+            "classes": [],
+            "dependencies": [
+                "List<Film>",
+                "Integer"
+            ],
+            "complexity": {
+                "cyclomatic": 1,
+                "nesting_depth": 0
+            },
+            "comments": [
+                "The interface is likely part of a larger system for managing films.",
+                "Methods use simple data types (String, Integer) and return a generic List type.",
+                "The lack of implementation details makes it difficult to assess the full complexity or design."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/respositories/CategoryRepository.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines an interface for a repository to interact with the Category entity in a JPA (Java Persistence API) compliant application.",
+            "functions": [
+                "getCategoryByCategoryId(Integer id)"
+            ],
+            "classes": [
+                "CategoryRepository"
+            ],
+            "dependencies": [
+                "com.sparta.engineering72.sakilaproject.entities.Category",
+                "org.springframework.data.jpa.repository.JpaRepository"
+            ],
+            "complexity": {
+                "cyclomatic": 1,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The interface extends JpaRepository, which provides CRUD operations on the Category entity.",
+                "The getCategoryByCategoryId method is a custom query method that retrieves a category by its ID."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/respositories/InventoryRepository.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines an interface for managing inventory data in a Spring Data JPA repository.",
+            "functions": [
+                "getInventoriesByInventoryId",
+                "deleteInventoryByInventoryId",
+                "getInventoryCount"
+            ],
+            "classes": [
+                "InventoryRepository"
+            ],
+            "dependencies": [
+                "com.sparta.engineering72.sakilaproject.entities.Inventory",
+                "com.sparta.engineering72.sakilaproject.entities.Rental",
+                "org.springframework.data.jpa.repository.JpaRepository",
+                "org.springframework.data.jpa.repository.Modifying",
+                "org.springframework.data.jpa.repository.Query",
+                "org.springframework.data.repository.query.Param"
+            ],
+            "complexity": {
+                "cyclomatic": 3,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The code uses native SQL queries for database operations.",
+                "The repository extends JpaRepository, which provides default CRUD methods."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/controller/StaffController.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines a Spring MVC controller for handling staff-related operations in a Sakila project. It provides methods to display staff information.",
+            "functions": [
+                "getAllStaff"
+            ],
+            "classes": [
+                "StaffController"
+            ],
+            "dependencies": [
+                "com.sparta.engineering72.sakilaproject.entities.Staff",
+                "com.sparta.engineering72.sakilaproject.services.CustomerService",
+                "com.sparta.engineering72.sakilaproject.services.InventoryService",
+                "com.sparta.engineering72.sakilaproject.services.StaffService"
+            ],
+            "complexity": {
+                "cyclomatic": 1,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The controller is annotated with @Controller, indicating it handles web requests.",
+                "It uses @Autowired to inject dependencies for CustomerService, InventoryService, and StaffService."
+            ]
+        },
+        {
+            "chunk_index": 2,
+            "summary": "This Java code defines a Spring MVC controller named StaffController that handles requests related to staff information. It retrieves data from services and adds it to the model map for rendering a view.",
+            "functions": [
+                "currentUser"
+            ],
+            "classes": [
+                "StaffController"
+            ],
+            "dependencies": [
+                "StaffService",
+                "CustomerService",
+                "InventoryService",
+                "HttpServletRequest",
+                "ModelMap"
+            ],
+            "complexity": {
+                "cyclomatic": 2,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The StaffController class is annotated with @Controller, indicating it's a Spring MVC controller.",
+                "It has three dependencies injected via the constructor for staffService, customerService, and inventoryService.",
+                "The currentUser method handles GET requests to '/owner' and retrieves staff information along with counts of customers and inventory items."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/controller/CustomerController.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines a Spring MVC controller for handling customer-related operations. It uses services to interact with various entities such as Customer, Film, Rental, and Inventory.",
+            "functions": [
+                "No specific methods are defined in this chunk."
+            ],
+            "classes": [
+                "CustomerController"
+            ],
+            "dependencies": [
+                "com.sparta.engineering72.sakilaproject.entities.Customer",
+                "com.sparta.engineering72.sakilaproject.entities.Film",
+                "com.sparta.engineering72.sakilaproject.services.CustomerService",
+                "com.sparta.engineering72.sakilaproject.services.FilmService",
+                "com.sparta.engineering72.sakilaproject.services.InventoryService",
+                "com.sparta.engineering72.sakilaproject.services.RentalService"
+            ],
+            "complexity": {
+                "cyclomatic": 1,
+                "nesting_depth": 0
+            },
+            "comments": [
+                "The class is annotated with @Controller, indicating it handles HTTP requests.",
+                "It has fields for various service classes which are injected via the constructor or setter methods.",
+                "No specific methods are defined in this chunk, suggesting that method implementations might be in a separate file."
+            ]
+        },
+        {
+            "chunk_index": 2,
+            "summary": "This code defines a `CustomerController` class responsible for handling requests related to customers and their rentals. It uses services such as `CustomerService`, `RentalService`, `InventoryService`, and `FilmService` to retrieve customer data, rental history, inventory details, and film information.",
+            "functions": [
+                "CustomerController(CustomerService, RentalService, InventoryService, FilmService)",
+                "currentUser(ModelMap, HttpServletRequest)"
+            ],
+            "classes": [
+                "CustomerController",
+                "Order"
+            ],
+            "dependencies": [
+                "CustomerService",
+                "RentalService",
+                "InventoryService",
+                "FilmService",
+                "ModelMap",
+                "HttpServletRequest",
+                "Customer",
+                "Rental",
+                "Inventory",
+                "Film"
+            ],
+            "complexity": {
+                "cyclomatic": 3,
+                "nesting_depth": 4
+            },
+            "comments": [
+                "The constructor uses dependency injection to initialize services.",
+                "The `currentUser` method retrieves customer details and their rental history, then populates a model map for use in the view."
+            ]
+        },
+        {
+            "chunk_index": 3,
+            "summary": "This code defines a Spring MVC controller method that handles GET requests to retrieve customer data based on optional filters for first name and last name. It delegates the fetching of customers to a `customerService` and adds the results to a `ModelMap` which is then returned as the view name.",
+            "functions": [
+                "getCustomers"
+            ],
+            "classes": [
+                "Customer",
+                "ModelMap"
+            ],
+            "dependencies": [
+                "customerService"
+            ],
+            "complexity": {
+                "cyclomatic": 4,
+                "nesting_depth": 2
+            },
+            "comments": "The code has a simple conditional structure that checks the filter parameters and delegates to different service methods accordingly. The use of `ModelMap` adds an additional layer of complexity for managing attributes in the view."
+        },
+        {
+            "chunk_index": 4,
+            "summary": "This code chunk appears to be part of a Spring MVC application that handles customer-related views. It includes two methods for adding customers and retrieving rental history for a specific customer.",
+            "functions": [
+                "showUsersRentalHistory"
+            ],
+            "classes": [
+                "Customer",
+                "Order",
+                "Rental",
+                "Inventory",
+                "Film"
+            ],
+            "dependencies": [
+                "customerService",
+                "rentalService",
+                "inventoryService",
+                "filmService",
+                "ModelMap"
+            ],
+            "complexity": {
+                "cyclomatic": 4,
+                "nesting_depth": 3
+            },
+            "comments": [
+                "The method 'showUsersRentalHistory' handles the retrieval of a customer's rental history and adds it to the model map for rendering.",
+                "There is a potential null check on the customer object, which helps avoid NullPointerExceptions.",
+                "The use of a loop to build the ordersList could be optimized if the number of rentals is large."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/controller/ActorController.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines a Spring MVC controller for handling requests related to actors.",
+            "functions": [
+                "ActorController"
+            ],
+            "classes": [
+                "ActorController",
+                "FilmService",
+                "ActorService"
+            ],
+            "dependencies": [
+                "com.sparta.engineering72.sakilaproject.entities.Actor",
+                "org.springframework.beans.factory.annotation.Autowired",
+                "org.springframework.stereotype.Controller",
+                "org.springframework.ui.ModelMap",
+                "org.springframework.web.bind.annotation.GetMapping",
+                "org.springframework.web.bind.annotation.RequestParam"
+            ],
+            "complexity": {
+                "cyclomatic": 1,
+                "nesting_depth": 1
+            },
+            "comments": "The code is well-structured with clear separation of concerns. It uses constructor injection for dependencies, which promotes immutability and testability."
+        },
+        {
+            "chunk_index": 2,
+            "summary": "This code defines a controller class for handling requests related to actors. It retrieves actors from the database based on filters and adds them to the model map to be displayed.",
+            "functions": [
+                "ActorController(FilmService filmService, ActorService actorService)",
+                "getActors(ModelMap modelMap, @RequestParam(value = \"firstName\", defaultValue = \"ALL ACTORS\") String firstNameFilter, @RequestParam(value = \"lastName\", defaultValue = \"ALL ACTORS\") String lastNameFilter)"
+            ],
+            "classes": [
+                "ActorController"
+            ],
+            "dependencies": [
+                "FilmService",
+                "ActorService",
+                "ModelMap",
+                "String",
+                "List<Actor>"
+            ],
+            "complexity": {
+                "cyclomatic": 5,
+                "nesting_depth": 3
+            },
+            "comments": [
+                "The code uses @Autowired to inject dependencies, which is a good practice for loose coupling.",
+                "The use of multiple if-else conditions can be refactored to improve readability and maintainability.",
+                "Hardcoding default values in the request parameters might lead to unexpected behavior; consider using enums or constants."
+            ]
+        },
+        {
+            "chunk_index": 3,
+            "summary": "This code defines a controller and utility methods to handle requests for actor details.",
+            "functions": [
+                "getActorFilmDetails",
+                "findActorById",
+                "getActorFullNameFromID"
+            ],
+            "classes": [],
+            "dependencies": [
+                "ModelMap",
+                "RequestParam",
+                "actorService",
+                "filmService",
+                "Actor"
+            ],
+            "complexity": {
+                "cyclomatic": 4,
+                "nesting_depth": 2
+            },
+            "comments": [
+                "The code is well-structured with clear method names and a single responsibility per function.",
+                "There are no significant comments or documentation, which could make the code harder to understand for new developers."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/controller/MainController.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines a Spring MVC controller with methods to handle requests for the home, login, and account pages.",
+            "functions": [
+                "home",
+                "login",
+                "account"
+            ],
+            "classes": [
+                "MainController"
+            ],
+            "dependencies": [
+                "org.springframework.web.bind.annotation.RequestMapping",
+                "org.springframework.stereotype.Controller"
+            ],
+            "complexity": {
+                "cyclomatic": 3,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The controller uses Spring annotations to map URLs to specific methods, which is typical for handling web requests in a Spring MVC application.",
+                "Each method returns a view name as a String, suggesting that there are corresponding HTML templates named 'home', 'login', and 'account' located in the views directory."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/controller/CategoryController.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines a Spring MVC controller for handling requests related to categories in the Sakila project.",
+            "functions": [
+                "getCategories",
+                "getCategoryDetails",
+                "getCategoryById"
+            ],
+            "classes": [
+                "CategoryController"
+            ],
+            "dependencies": [
+                "com.sparta.engineering72.sakilaproject.entities.Category",
+                "com.sparta.engineering72.sakilaproject.services.FilmService",
+                "com.sparta.engineering72.sakilaproject.services.CategoryService",
+                "org.springframework.beans.factory.annotation.Autowired",
+                "org.springframework.stereotype.Controller",
+                "org.springframework.ui.ModelMap",
+                "org.springframework.web.bind.annotation.GetMapping",
+                "org.springframework.web.bind.annotation.RequestParam"
+            ],
+            "complexity": {
+                "cyclomatic": 5,
+                "nesting_depth": 2
+            },
+            "comments": [
+                "The controller uses dependency injection to get instances of FilmService and CategoryService.",
+                "It defines methods to handle GET requests for categories and category details.",
+                "getCategoryById is not directly exposed via a URL, it seems to be an internal method used by other methods."
+            ]
+        },
+        {
+            "chunk_index": 2,
+            "summary": "This code defines a method to retrieve a category by its ID using a service.",
+            "functions": [
+                "getCategoryById"
+            ],
+            "classes": [],
+            "dependencies": [
+                "categoryService"
+            ],
+            "complexity": {
+                "cyclomatic": 1,
+                "nesting_depth": 1
+            },
+            "comments": []
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/controller/FilmController.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines a Spring MVC controller for managing films in the Sakila project.",
+            "functions": [],
+            "classes": [
+                "FilmController"
+            ],
+            "dependencies": [
+                "Customer",
+                "Film",
+                "Inventory",
+                "Rental",
+                "CustomerService",
+                "FilmService",
+                "InventoryService",
+                "RentalService"
+            ],
+            "complexity": {
+                "cyclomatic": 0,
+                "nesting_depth": 0
+            },
+            "comments": [
+                "The class is annotated with @Controller, indicating it's a Spring MVC controller.",
+                "It uses dependencies for various services related to Customer, Film, Inventory, and Rental.",
+                "No methods are defined in this snippet, suggesting that the actual method implementations might be spread across other files or packages."
+            ]
+        },
+        {
+            "chunk_index": 2,
+            "summary": "This code defines a Spring MVC controller named FilmController that handles requests related to films. It interacts with various services such as FilmService, InventoryService, RentalService, and CustomerService to fetch and display film data.",
+            "functions": [
+                "getFilms"
+            ],
+            "classes": [
+                "FilmController",
+                "FilmService",
+                "InventoryService",
+                "RentalService",
+                "CustomerService"
+            ],
+            "dependencies": [
+                "java.sql.Timestamp",
+                "java.time.Instant",
+                "java.time.LocalDate",
+                "java.util.List",
+                "org.springframework.web.bind.annotation.Controller",
+                "org.springframework.web.bind.annotation.GetMapping",
+                "org.springframework.web.bind.annotation.RequestParam",
+                "org.springframework.ui.ModelMap"
+            ],
+            "complexity": {
+                "cyclomatic": 3,
+                "nesting_depth": 2
+            },
+            "comments": [
+                "The comments suggest that the commented line is a leftover or an alternative implementation of setting the title attribute in modelMap."
+            ]
+        },
+        {
+            "chunk_index": 3,
+            "summary": "This code chunk defines two RESTful endpoints for managing film details and rentals.",
+            "functions": [
+                "getFilmDetails",
+                "rentFilm"
+            ],
+            "classes": [],
+            "dependencies": [
+                "filmService",
+                "customerService",
+                "inventoryService",
+                "rentalService"
+            ],
+            "complexity": {
+                "cyclomatic": 4,
+                "nesting_depth": 3
+            },
+            "comments": [
+                "The code uses @RequestParam for film id in getFilmDetails and @PathVariable for filmid in rentFilm.",
+                "The method 'rentFilm' has a nested loop and conditional logic, which could be refactored for better readability and performance."
+            ]
+        },
+        {
+            "chunk_index": 4,
+            "summary": "This code chunk defines a Spring Boot controller for managing films, including listing, editing, and deleting films.",
+            "functions": [
+                "getFilmDetails",
+                "showEditProductPage",
+                "deleteProduct",
+                "findFilmByID"
+            ],
+            "classes": [
+                "ManageFilmsController"
+            ],
+            "dependencies": [
+                "filmService",
+                "ModelMap",
+                "@RequestParam",
+                "PathVariable",
+                "ModelAndView",
+                "List",
+                "HashMap",
+                "Film"
+            ],
+            "complexity": {
+                "cyclomatic": 5,
+                "nesting_depth": 3
+            },
+            "comments": [
+                "The getFilmDetails method handles listing films with optional filtering and populates the model map accordingly.",
+                "showEditProductPage retrieves a film by ID for editing, returning it to the edit-film view.",
+                "deleteProduct deletes a film by ID and redirects back to the manage-films page.",
+                "findFilmByID is a utility method that returns a film by its ID using filmService."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/services/StaffService.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines a service class for handling staff operations using Spring's @Service annotation.",
+            "functions": [
+                "getAllStaff",
+                "getStaffByUsername"
+            ],
+            "classes": [
+                "StaffService"
+            ],
+            "dependencies": [
+                "com.sparta.engineering72.sakilaproject.entities.Staff",
+                "com.sparta.engineering72.sakilaproject.respositories.StaffRepository",
+                "org.springframework.stereotype.Service"
+            ],
+            "complexity": {
+                "cyclomatic": 3,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The class is well-structured with clear method names.",
+                "It uses constructor injection for dependency injection, adhering to good practices."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/services/RentalService.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines a service class for handling rentals in a Sakila project. It provides methods to retrieve rentals by customer ID and add new rentals.",
+            "functions": [
+                "getRentalsByCustomer",
+                "addRental"
+            ],
+            "classes": [
+                "RentalService"
+            ],
+            "dependencies": [
+                "com.sparta.engineering72.sakilaproject.entities.Rental",
+                "com.sparta.engineering72.sakilaproject.respositories.RentalRepository"
+            ],
+            "complexity": {
+                "cyclomatic": 5,
+                "nesting_depth": 2
+            },
+            "comments": [
+                "The code uses Spring's @Service annotation to mark it as a service layer component.",
+                "It relies on the RentalRepository for data access, which indicates separation of concerns and adherence to the Single Responsibility Principle.",
+                "The constructor injection of RentalRepository demonstrates good practice for dependency management."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/services/InventoryService.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines a service class for handling inventory operations in a Sakila project. It interacts with the InventoryRepository to perform CRUD and counting operations on inventory items.",
+            "functions": [
+                "getAllInventory",
+                "getInventoriesById",
+                "deleteInventoryItemById",
+                "getInventoryCount"
+            ],
+            "classes": [
+                "InventoryService"
+            ],
+            "dependencies": [
+                "com.sparta.engineering72.sakilaproject.entities.Inventory",
+                "com.sparta.engineering72.sakilaproject.respositories.InventoryRepository",
+                "org.springframework.stereotype.Service",
+                "org.springframework.transaction.annotation.Transactional"
+            ],
+            "complexity": {
+                "cyclomatic": 4,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The class is annotated with @Service, indicating it's a Spring-managed service.",
+                "All methods are public and directly interact with the InventoryRepository to perform database operations.",
+                "The deleteInventoryItemById method is annotated with @Transactional, ensuring that the operation is performed within a transaction."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/services/CustomerService.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This Java code defines a service class `CustomerService` within the package `com.sparta.engineering72.sakilaproject.services`. It provides methods to interact with customer data using a repository interface.",
+            "functions": [
+                "getAllCustomers",
+                "getCustomersByFirstName",
+                "getCustomersByLastName",
+                "getCustomersByFullName",
+                "getCustomerByID",
+                "getCustomerByEmail",
+                "save",
+                "getCustomerCount"
+            ],
+            "classes": [
+                "CustomerService"
+            ],
+            "dependencies": [
+                "com.sparta.engineering72.sakilaproject.entities.Customer",
+                "com.sparta.engineering72.sakilaproject.respositories.CustomerRepository"
+            ],
+            "complexity": {
+                "cyclomatic": 7,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The class is annotated with @Service, indicating it's a Spring service layer component.",
+                "Each method performs a specific operation related to customer data retrieval and saving.",
+                "The repository interface is used directly in the service for data persistence operations."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/services/CategoryService.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This Java code defines a service class named `CategoryService` within the package `com.sparta.engineering72.sakilaproject.services`. The service provides methods to retrieve all categories and a category by its ID. It relies on an external repository `CategoryRepository` for data access.",
+            "functions": [
+                "getAllCategories",
+                "getByCategoryId"
+            ],
+            "classes": [
+                "CategoryService"
+            ],
+            "dependencies": [
+                "com.sparta.engineering72.sakilaproject.entities.Category",
+                "com.sparta.engineering72.sakilaproject.respositories.CategoryRepository"
+            ],
+            "complexity": {
+                "cyclomatic": 3,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The code is well-structured with clear method names and uses constructor injection for dependency injection. It follows good design principles by separating concerns (service for business logic, repository for data access)."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/services/ActorService.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines a service class for managing actors in a movie database. It provides methods to retrieve all actors, get an actor by ID, and filter actors by various criteria such as full name, first name, and last name.",
+            "functions": [
+                "getAllActors",
+                "getActorByID",
+                "getActorsByFullName",
+                "getActorsByFirstName",
+                "getActorsByLastName",
+                "getActorFullNameFromID"
+            ],
+            "classes": [
+                "ActorService"
+            ],
+            "dependencies": [
+                "com.sparta.engineering72.sakilaproject.entities.Actor",
+                "com.sparta.engineering72.sakilaproject.respositories.ActorRepository",
+                "org.springframework.stereotype.Service"
+            ],
+            "complexity": {
+                "cyclomatic": 6,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The class is annotated with @Service, indicating that it's a Spring service component.",
+                "The constructor injects the ActorRepository dependency, which is used to perform database operations.",
+                "All methods are public and return types are either List<Actor> or String, ensuring type safety and clarity.",
+                "Method names follow consistent naming conventions, making the code easy to read and maintain."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/services/FilmService.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines a service class for managing films using Spring Framework.",
+            "functions": [
+                "getAllFilms",
+                "getFilmByID",
+                "getFilmsByTitle",
+                "getAvailableFilms",
+                "getAvailableFilmCount",
+                "getFilmsByCategory",
+                "getFilmsByActor",
+                "save",
+                "deleteFilmById"
+            ],
+            "classes": [
+                "FilmService"
+            ],
+            "dependencies": [
+                "com.sparta.engineering72.sakilaproject.entities.Film",
+                "com.sparta.engineering72.sakilaproject.respositories.FilmRepository"
+            ],
+            "complexity": {
+                "cyclomatic": 10,
+                "nesting_depth": 2
+            },
+            "comments": [
+                "The class is annotated with @Service, indicating it's a service layer component.",
+                "All methods are public and return types are explicitly defined except for deleteFilmById which returns void.",
+                "Constructor injection is used to inject the FilmRepository dependency."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/entities/Order.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines an `Order` class in the `com.sparta.engineering72.sakilaproject.entities` package. The class represents an order and contains references to a `Customer`, `Film`, and `Rental`. It includes getter and setter methods for these fields.",
+            "functions": [
+                "getCustomer",
+                "setCustomer",
+                "getFilm",
+                "setFilm",
+                "getRental",
+                "setRental"
+            ],
+            "classes": [
+                "Order"
+            ],
+            "dependencies": [
+                "Customer",
+                "Film",
+                "Rental"
+            ],
+            "complexity": {
+                "cyclomatic": 1,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The class is simple and only contains basic getter and setter methods, indicating that it may be part of a larger system for managing order data."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/entities/Film.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines a JPA entity class 'Film' representing a film in the Sakila project. It includes fields for various attributes of a film and getters/setters for these fields.",
+            "functions": [
+                "getFilmId",
+                "setFilmId",
+                "getTitle",
+                "setTitle",
+                "getDescription",
+                "setDescription",
+                "getReleaseYear",
+                "setReleaseYear"
+            ],
+            "classes": [
+                "Film"
+            ],
+            "dependencies": [
+                "org.springframework.format.annotation.DateTimeFormat",
+                "javax.persistence.*",
+                "java.math.BigDecimal",
+                "java.sql.Timestamp",
+                "java.time.LocalDate"
+            ],
+            "complexity": {
+                "cyclomatic": 1,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The class is annotated with @Entity, indicating it's a JPA entity.",
+                "Fields are marked with @Id and @Column annotations for persistence mapping.",
+                "Methods follow the JavaBeans pattern with getter and setter methods."
+            ]
+        },
+        {
+            "chunk_index": 2,
+            "summary": "This code chunk defines getter and setter methods for various properties of a movie entity.",
+            "functions": [
+                "setReleaseYear",
+                "getRentalDuration",
+                "setRentalDuration",
+                "getRentalRate",
+                "setRentalRate",
+                "getLength",
+                "setLength",
+                "getReplacementCost",
+                "setReplacementCost",
+                "getRating",
+                "setRating",
+                "getSpecialFeatures",
+                "setSpecialFeatures"
+            ],
+            "classes": [],
+            "dependencies": [
+                "BigDecimal",
+                "String"
+            ],
+            "complexity": {
+                "cyclomatic": 1,
+                "nesting_depth": 1
+            },
+            "comments": "The code is well-structured with clear naming conventions and uses standard annotations for database mapping. The cyclomatic complexity is low, indicating simple logic without complex conditional statements."
+        },
+        {
+            "chunk_index": 3,
+            "summary": "This code defines a class with methods for setting and getting properties of a film, as well as overridden methods for equals and hashCode.",
+            "functions": [
+                "setSpecialFeatures",
+                "getLastUpdate",
+                "setLastUpdate",
+                "equals",
+                "hashCode"
+            ],
+            "classes": [
+                "Film"
+            ],
+            "dependencies": [
+                "Objects",
+                "Timestamp",
+                "Basic",
+                "Column"
+            ],
+            "complexity": {
+                "cyclomatic": 3,
+                "nesting_depth": 2
+            },
+            "comments": [
+                "The class name 'Film' suggests it represents a film entity.",
+                "Annotations like @Basic and @Column are typically used in ORM frameworks for mapping Java objects to database tables.",
+                "The equals and hashCode methods ensure proper comparison and hashing of Film objects based on their properties."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/entities/Customer.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines an entity class 'Customer' that represents a customer in a database. It includes fields for customer details such as ID, name, email, and activity status, along with getter and setter methods for these fields.",
+            "functions": [
+                "getCustomerId",
+                "setCustomerId",
+                "getFirstName",
+                "setFirstName",
+                "getLastName",
+                "setLastName",
+                "getEmail",
+                "setEmail",
+                "getActive",
+                "setActive"
+            ],
+            "classes": [
+                "Customer"
+            ],
+            "dependencies": [
+                "javax.persistence.Basic",
+                "javax.persistence.Column",
+                "javax.persistence.Entity",
+                "javax.persistence.Id",
+                "java.sql.Timestamp"
+            ],
+            "complexity": {
+                "cyclomatic": 1,
+                "nesting_depth": 2
+            },
+            "comments": [
+                "The class is annotated with @Entity, indicating it's a JPA entity.",
+                "Each field has corresponding getter and setter methods for data encapsulation.",
+                "Timestamps are used to record creation and last update times."
+            ]
+        },
+        {
+            "chunk_index": 2,
+            "summary": "This code defines a Java class with properties for a customer's status and timestamps, along with methods to get and set these properties.",
+            "functions": [
+                "getActive",
+                "setActive",
+                "getCreateDate",
+                "setCreateDate",
+                "getLastUpdate",
+                "setLastUpdate",
+                "equals",
+                "hashCode"
+            ],
+            "classes": [
+                "Customer"
+            ],
+            "dependencies": [
+                "byte",
+                "Timestamp",
+                "Objects"
+            ],
+            "complexity": {
+                "cyclomatic": 3,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The class is annotated with @Basic and @Column, which suggests it's part of an ORM (Object-Relational Mapping) system like Hibernate.",
+                "The equals and hashCode methods are overridden to provide proper comparison and hashing based on the object's properties."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/entities/Inventory.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines an entity class for the Inventory table in a database using JPA annotations.",
+            "functions": [
+                "getInventoryId",
+                "setInventoryId",
+                "getFilmId",
+                "setFilmId",
+                "getLastUpdate",
+                "setLastUpdate",
+                "equals",
+                "hashCode"
+            ],
+            "classes": [
+                "Inventory"
+            ],
+            "dependencies": [
+                "javax.persistence.*",
+                "java.sql.Timestamp",
+                "java.util.Objects"
+            ],
+            "complexity": {
+                "cyclomatic": 5,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The class is annotated with @Entity, indicating it's a JPA entity.",
+                "It includes getters and setters for its fields.",
+                "The equals and hashCode methods are overridden to ensure proper comparison and hashing based on inventoryId and lastUpdate."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/entities/FilmActorPK.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This Java code defines an entity class for the primary key of a many-to-many relationship between films and actors in a Sakila database. It includes getters, setters, equals, and hashCode methods.",
+            "functions": [
+                "getActorId",
+                "setActorId",
+                "getFilmId",
+                "setFilmId"
+            ],
+            "classes": [
+                "FilmActorPK"
+            ],
+            "dependencies": [
+                "java.io.Serializable",
+                "java.util.Objects"
+            ],
+            "complexity": {
+                "cyclomatic": 2,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The class implements Serializable to enable object serialization.",
+                "It uses JPA annotations for database mapping and primary key identification."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/entities/Category.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines an entity class `Category` for a database table with properties like category ID, name, and last update timestamp. It includes JPA annotations for mapping to a database.",
+            "functions": [
+                "getCategoryId",
+                "setCategoryId",
+                "getName",
+                "setName",
+                "getLastUpdate",
+                "setLastUpdate",
+                "equals",
+                "hashCode"
+            ],
+            "classes": [
+                "Category"
+            ],
+            "dependencies": [],
+            "complexity": {
+                "cyclomatic": 7,
+                "nesting_depth": 2
+            },
+            "comments": "The code follows a standard Java bean pattern with clear getter and setter methods. The `equals` and `hashCode` methods are implemented for proper object comparison, which is useful when used in collections or as keys in maps."
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/entities/FilmCategoryPK.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines an entity class `FilmCategoryPK` which represents a composite primary key for the `film_category` table in a database. It includes fields for `filmId` and `categoryId`, annotated with JPA annotations to map them to database columns, and implements methods for equality comparison and hashcode generation.",
+            "functions": [
+                "getFilmId",
+                "setFilmId",
+                "getCategoryId",
+                "setCategoryId"
+            ],
+            "classes": [
+                "FilmCategoryPK"
+            ],
+            "dependencies": [
+                "javax.persistence.Column",
+                "javax.persistence.Id",
+                "java.io.Serializable",
+                "java.util.Objects"
+            ],
+            "complexity": {
+                "cyclomatic": 3,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The class implements `Serializable` to allow the primary key to be used in collections like maps.",
+                "The `equals` and `hashCode` methods are overridden to ensure proper comparison and hashing of instances."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/entities/FilmActor.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines a JPA entity class for the 'film_actor' table in a Sakila database. It includes fields for actor ID, film ID, and last update timestamp, along with standard methods for persistence and object comparison.",
+            "functions": [
+                "getActorId",
+                "setActorId",
+                "getFilmId",
+                "setFilmId",
+                "getLastUpdate",
+                "setLastUpdate",
+                "equals",
+                "hashCode"
+            ],
+            "classes": [
+                "FilmActor"
+            ],
+            "dependencies": [
+                "javax.persistence.Entity",
+                "javax.persistence.Table",
+                "javax.persistence.IdClass",
+                "java.sql.Timestamp",
+                "java.util.Objects"
+            ],
+            "complexity": {
+                "cyclomatic": 4,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The class is annotated with @Entity, @Table, and @IdClass to facilitate JPA persistence.",
+                "It includes getter and setter methods for each field, as well as overridden equals and hashCode methods for proper object comparison."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/entities/FilmCategory.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This Java code defines an entity class for the 'film_category' table in a database schema named 'sakila'. It includes fields for film ID, category ID, and last update timestamp, along with methods to access and modify these fields. The class implements equality and hashcode methods based on its primary key.",
+            "functions": [
+                "getFilmId",
+                "setFilmId",
+                "getCategoryId",
+                "setCategoryId",
+                "getLastUpdate",
+                "setLastUpdate",
+                "equals",
+                "hashCode"
+            ],
+            "classes": [
+                "FilmCategory"
+            ],
+            "dependencies": [
+                "javax.persistence.*",
+                "java.sql.Timestamp",
+                "java.util.Objects"
+            ],
+            "complexity": {
+                "cyclomatic": 7,
+                "nesting_depth": 2
+            },
+            "comments": [
+                "The class uses JPA annotations to map the entity to a database table.",
+                "Primary keys are defined using the @Id annotation and combined with FilmCategoryPK in an IdClass.",
+                "Equality and hashcode methods are overridden for proper object comparison."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/entities/Actor.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This Java code defines an 'Actor' entity with properties for actor ID, first name, last name, and last update timestamp. It includes getter and setter methods for each property.",
+            "functions": [
+                "getActorId",
+                "setActorId",
+                "getFirstName",
+                "setFirstName",
+                "getLastName",
+                "setLastName",
+                "getLastUpdate",
+                "setLastUpdate"
+            ],
+            "classes": [
+                "Actor"
+            ],
+            "dependencies": [
+                "javax.persistence.Entity",
+                "javax.persistence.Id",
+                "javax.persistence.Basic",
+                "javax.persistence.Column",
+                "java.sql.Timestamp"
+            ],
+            "complexity": {
+                "cyclomatic": 1,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The code uses JPA annotations to map the entity to a database table.",
+                "It follows good object-oriented principles with encapsulation through getter and setter methods."
+            ]
+        },
+        {
+            "chunk_index": 2,
+            "summary": "This code defines an Actor class with methods to set the last update timestamp and override equals and hashCode methods.",
+            "functions": [
+                "setLastUpdate",
+                "equals",
+                "hashCode"
+            ],
+            "classes": [
+                "Actor"
+            ],
+            "dependencies": [
+                "Timestamp",
+                "Objects"
+            ],
+            "complexity": {
+                "cyclomatic": 3,
+                "nesting_depth": 2
+            },
+            "comments": [
+                "The `setLastUpdate` method sets the last update timestamp.",
+                "The `equals` and `hashCode` methods are overridden to provide custom implementations for comparing and hashing `Actor` objects."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/entities/Staff.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This Java code defines an entity class 'Staff' for a database table with attributes related to staff members.",
+            "functions": [
+                "getStaffId",
+                "setStaffId",
+                "getFirstName",
+                "setFirstName",
+                "getLastName",
+                "setLastName",
+                "getPicture",
+                "setPicture",
+                "getEmail",
+                "setEmail"
+            ],
+            "classes": [
+                "Staff"
+            ],
+            "dependencies": [
+                "javax.persistence.Basic",
+                "javax.persistence.Column",
+                "javax.persistence.Entity",
+                "javax.persistence.Id",
+                "java.sql.Timestamp",
+                "java.util.Objects"
+            ],
+            "complexity": {
+                "cyclomatic": 1,
+                "nesting_depth": 2
+            },
+            "comments": [
+                "The class is annotated with @Entity, indicating it's a JPA entity.",
+                "It includes getters and setters for each field, adhering to the JavaBeans convention.",
+                "The 'picture' field is of type byte[], suggesting it might store binary data like images."
+            ]
+        },
+        {
+            "chunk_index": 2,
+            "summary": "This code snippet defines a Java class with several getter and setter methods for database columns.",
+            "functions": [
+                "getEmail",
+                "setEmail",
+                "getActive",
+                "setActive",
+                "getUsername",
+                "setUsername",
+                "getPassword",
+                "setPassword",
+                "getLastUpdate",
+                "setLastUpdate"
+            ],
+            "classes": [],
+            "dependencies": [
+                "javax.persistence.Basic",
+                "javax.persistence.Column",
+                "java.sql.Timestamp"
+            ],
+            "complexity": {
+                "cyclomatic": 1,
+                "nesting_depth": 1
+            },
+            "comments": "The code is simple and follows standard Java bean conventions for getter and setter methods. It relies on JPA annotations for database mapping, which might indicate that this class is part of an entity in a persistence layer."
+        },
+        {
+            "chunk_index": 3,
+            "summary": "This code snippet defines methods for setting the last update timestamp and overriding equals and hashCode methods in a Staff class.",
+            "functions": [
+                "setLastUpdate",
+                "equals",
+                "hashCode"
+            ],
+            "classes": [
+                "Staff"
+            ],
+            "dependencies": [
+                "java.sql.Timestamp",
+                "java.util.Objects",
+                "java.util.Arrays"
+            ],
+            "complexity": {
+                "cyclomatic": 8,
+                "nesting_depth": 3
+            },
+            "comments": "The equals and hashCode methods are correctly implemented using Objects.hash and Arrays.hashCode. The setLastUpdate method is straightforward."
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/entities/Rental.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This code defines an entity class for a rental in a Sakila project using JPA annotations.",
+            "functions": [
+                "getRentalId",
+                "setRentalId",
+                "getRentalDate",
+                "setRentalDate",
+                "getInventoryId",
+                "setInventoryId",
+                "getCustomerId",
+                "setCustomerId",
+                "getReturnDate",
+                "setReturnDate"
+            ],
+            "classes": [
+                "Rental"
+            ],
+            "dependencies": [
+                "javax.persistence.*",
+                "java.sql.Timestamp",
+                "java.util.Objects"
+            ],
+            "complexity": {
+                "cyclomatic": 1,
+                "nesting_depth": 1
+            },
+            "comments": [
+                "The class is annotated with @Entity, indicating it's a JPA entity.",
+                "It has fields for rental details like rentalId, rentalDate, etc., each with corresponding getter and setter methods.",
+                "All fields are annotated with @Basic and @Column to map to database columns."
+            ]
+        },
+        {
+            "chunk_index": 2,
+            "summary": "This code snippet defines a Java class 'Rental' with methods to get and set various properties including return date, staff ID, and last update timestamp. It also overrides the equals and hashCode methods.",
+            "functions": [
+                "setReturnDate",
+                "getStaffId",
+                "setStaffId",
+                "getLastUpdate",
+                "setLastUpdate",
+                "equals",
+                "hashCode"
+            ],
+            "classes": [
+                "Rental"
+            ],
+            "dependencies": [
+                "Timestamp",
+                "Objects"
+            ],
+            "complexity": {
+                "cyclomatic": 4,
+                "nesting_depth": 2
+            },
+            "comments": [
+                "The 'equals' and 'hashCode' methods use the 'Objects.equals' and 'Objects.hash' utilities from the Java standard library."
+            ]
+        }
+    ],
+    "./src/main/java/com/sparta/engineering72/sakilaproject/entities/FilmText.java": [
+        {
+            "chunk_index": 1,
+            "summary": "This Java code defines an entity class `FilmText` for the `film_text` table in a database schema named `sakila`. It includes getters and setters for its properties: `filmId`, `title`, and `description`. The class overrides `equals` and `hashCode` methods to ensure proper comparison and hashing of objects.",
+            "functions": [
+                "getFilmId",
+                "setFilmId",
+                "getTitle",
+                "setTitle",
+                "getDescription",
+                "setDescription",
+                "equals",
+                "hashCode"
+            ],
+            "classes": [
+                "FilmText"
+            ],
+            "dependencies": [
+                "javax.persistence.Entity",
+                "javax.persistence.Table",
+                "javax.persistence.Id",
+                "javax.persistence.Column",
+                "java.util.Objects"
+            ],
+            "complexity": {
+                "cyclomatic": 3,
+                "nesting_depth": 2
+            },
+            "comments": [
+                "The class uses JPA annotations to map the Java object to a database table.",
+                "Proper equals and hashCode methods are implemented for proper collection handling."
+            ]
+        }
+    ]
+}
